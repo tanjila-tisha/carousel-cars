@@ -1,0 +1,73 @@
+.wrapper {
+  margin: 50px auto;
+  width: 90%;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel {
+  overflow: hidden;
+  margin: 20px;
+}
+
+.inner {
+  transition: transform 2s;
+  display: flex;
+  align-items: center;
+}
+
+.car-card {
+  margin: 10px;
+  width: 25%;
+}
+
+.car-card .car-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.car-card .car-model {
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+}
+
+.car-card .car-links .car-link {
+  text-decoration: none;
+  font-weight: 500;
+  color: #1c6bba;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.buttons-wrapper .buttons {
+  display: flex;
+  flex-direction: row;
+  align-self: flex-end;
+}
+
+@media screen and (max-width: 768px) {
+  .car-card {
+    width: 75%;
+  }
+
+  .car-card .car-model {
+    flex-direction: column;
+  }
+
+  .buttons-wrapper .buttons {
+    display: none;
+  }
+}
