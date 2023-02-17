@@ -1,8 +1,8 @@
 import React from "react";
 import { Text, View } from "vcc-ui";
-import { Car } from "../types";
 import Image from "next/image";
-import Link from "next/link";
+import { Car } from "../types";
+import PageNavigation from "./PageNavigation";
 
 interface CarProps {
   car: Car;
@@ -20,17 +20,15 @@ const CarCard = ({ car, isDetailPage = false }: CarProps): JSX.Element => {
         <View extend={{ color: "gray" }}> {car.modelType}</View>
       </View>
       <View paddingTop={2}>
-        <div>
-          <Image
-            src={car.imageUrl}
-            alt={car.modelName}
-            title={car.modelName}
-            layout="responsive"
-            width="350"
-            height="270"
-            priority
-          />
-        </div>
+        <Image
+          src={car.imageUrl}
+          alt={car.modelName}
+          title={car.modelName}
+          layout="responsive"
+          width="350"
+          height="270"
+          priority
+        />
       </View>
       <View
         extend={{
@@ -41,45 +39,12 @@ const CarCard = ({ car, isDetailPage = false }: CarProps): JSX.Element => {
       >
         {!isDetailPage ? (
           <div className="car-links">
-            <Link href={`/learn/${car.id}`}>
-              <a className="car-link">
-                <span>Learn</span>
-                <Image
-                  src="/images/chevron-small.svg"
-                  height={16}
-                  width={16}
-                  alt="arrow right"
-                  title="arrow right"
-                />
-              </a>
-            </Link>
-            <Link href={`/shop/${car.id}`}>
-              <a className="car-link">
-                <span>Shop</span>
-                <Image
-                  src="/images/chevron-small.svg"
-                  height={16}
-                  width={16}
-                  alt="arrow right"
-                  title="arrow right"
-                />
-              </a>
-            </Link>
+            <PageNavigation route={`/learn/${car.id}`} label="Learn" />
+            <PageNavigation route={`/shop/${car.id}`} label="Shop" />
           </div>
         ) : (
           <div className="car-links">
-            <Link href="/">
-              <a className="car-link">
-                <span>Back Home</span>
-                <Image
-                  src="/images/chevron-small.svg"
-                  height={16}
-                  width={16}
-                  alt="arrow right"
-                  title="arrow right"
-                />
-              </a>
-            </Link>
+            <PageNavigation route="/" label="Back" />
           </div>
         )}
       </View>

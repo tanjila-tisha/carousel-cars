@@ -4,7 +4,7 @@ import CarList from "../src/components/CarList";
 function HomePage() {
   return (
     <React.StrictMode>
-          <CarList />
+      <CarList />
     </React.StrictMode>
   );
 }

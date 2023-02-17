@@ -12,9 +12,7 @@ const CarList = (): JSX.Element => {
   const { getCarsByType } = useCars();
   const cars = getCarsByType(filteredType);
 
-  const updateActiveIndex = (index: number) => {
-    setActiveCard(index);
-  };
+  const updateActiveCard = (index: number) => setActiveCard(index);
 
   return (
     <div className="wrapper">
@@ -22,6 +20,7 @@ const CarList = (): JSX.Element => {
         options={getCarTypes()}
         selected={filteredType}
         onChange={setFilteredType}
+        label="Filter cars by type"
       />
       <div className="carousel">
         <div
@@ -37,18 +36,31 @@ const CarList = (): JSX.Element => {
         <div className="buttons">
           <CarouselButton
             type="mediacircled-previous-32"
-            onClick={updateActiveIndex}
+            onClick={updateActiveCard}
             index={activeCard - 1}
             disabled={activeCard === 0}
           />
           <CarouselButton
             type="mediacircled-next-32"
-            onClick={updateActiveIndex}
+            onClick={updateActiveCard}
             index={activeCard + 1}
             disabled={activeCard === cars.length - 1}
           />
         </div>
       </View>
+      <div className="carousel-indicator">
+        {cars.map((car, index) => (
+          <div
+            key={car.id}
+            onClick={() => updateActiveCard(index)}
+            className={
+              index === activeCard
+                ? "carousel-indicator-dot carousel-indicator-dot-active"
+                : "carousel-indicator-dot"
+            }
+          />
+        ))}
+      </div>
     </div>
   );
 };

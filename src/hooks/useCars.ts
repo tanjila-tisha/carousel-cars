@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { DEVELOPMENT_ENDPOINT } from "../constant";
 import { Car } from "../types/index";
 
 export const useCars = () => {
@@ -7,7 +8,7 @@ export const useCars = () => {
   //Fetching data from json file
   const fetchCarList = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/cars.json", {
+      const response = await fetch(`${DEVELOPMENT_ENDPOINT}/api/cars.json`, {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
@@ -29,7 +30,9 @@ export const useCars = () => {
     }
   };
 
-  const getCarById = (id:string) => cars.find(car => car.id === id);
+  //Filtering car by it's ID
+  const getCarById = (id: string): Car | undefined =>
+    cars.find((car) => car.id === id);
 
   useEffect(() => {
     fetchCarList().then(setCarList);

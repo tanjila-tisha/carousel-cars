@@ -1,0 +1,1 @@
+export const DEVELOPMENT_ENDPOINT = "http://localhost:3000";

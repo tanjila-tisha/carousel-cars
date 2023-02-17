@@ -18,7 +18,6 @@ const CarouselButton = ({
       variant="text"
       onClick={() => onClick(index)}
       disabled={disabled}
-      extend={{width: 36}}
     >
       <Icon type={type} />
     </Button>
